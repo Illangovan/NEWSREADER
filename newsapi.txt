@@ -1,0 +1,1 @@
+https://newsapi.org/v2/everything?q=bitcoin&apiKey=1fc433b785934694b772265197cdd685
