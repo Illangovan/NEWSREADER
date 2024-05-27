@@ -1,11 +1,17 @@
 body{
-    background-color: skyblue;
+    background-color: rgb(18, 206, 231);
 }
 .h1{
     color: white;
     padding-right: 2rem;
 }
-
+#nav
+{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
 .heading-design
 {
     color: rgb(18, 206, 231);
@@ -30,6 +36,12 @@ section
 }
 
 
+.change
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
 
 /*   Footer section*/
 
