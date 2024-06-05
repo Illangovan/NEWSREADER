@@ -1,13 +1,43 @@
 const axios=require("axios");
 const bodyParser = require("body-parser");
 const express=require("express")
+const mongoose=require("mongoose")
 const app=express();
 const port=process.env.PORT ||3000 ;
 
+//Mongo db connection
+const mongodbURL="mongodb+srv://andrewillango1212:gNKoIVjBk6yIcPLa@cluster0.feslzkv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+
+//creating schema for database
+var userfeedback=mongoose.Schema(
+    {
+        name:String,
+        mail:String,
+        area:String
+    }
+)
+
+var userModel=mongoose.model("Feedback",userfeedback);
+
+//connecting to mongo db atlas
+mongoose.connect(mongodbURL,{
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+});
+
+//creating mongodb connection
+const connection=mongoose.connection
+connection.once("open",()=>{
+    console.log("mongo db connected")
+})
+   
 
 
+///express middlewares
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended:true}));
+
+
 var c=0;
 var date=new Date();
 date.setDate(date.getDate() - 2)
@@ -190,11 +220,19 @@ app.post("/searchdata", async (req,res)=>{
 
 //collecting feedback from user
 
-app.post("/submit",(req,res)=>{
+app.post("/submit", async (req,res)=>{
 
     console.log(req.body["name"])
     console.log(req.body["mail"])
     console.log(req.body["area"])
+
+    const user=new userModel(req.body)
+    try{
+        await user.save();
+    }
+    catch(err){
+        console.log("error in inserting");
+    }
     res.redirect("/");
 })
 
