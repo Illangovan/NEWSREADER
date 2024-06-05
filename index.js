@@ -1,4 +1,5 @@
-const axios=require("axios")
+const axios=require("axios");
+const bodyParser = require("body-parser");
 const express=require("express")
 const app=express();
 const port=3000;
@@ -6,15 +7,19 @@ const port=3000;
 
 
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({extended:true}));
 var c=0;
-
+var date=new Date();
+date.setDate(date.getDate() - 2)
+date.toISOString().split('T')[0];
 //Endpoint for home page
 app.get("/", async (req,res)=>{
     var response;
     c=0;
     try{
-        response=await axios.get("https://newsapi.org/v2/everything?q=india&from=2024-05-26&to=2024-05-26&apiKey=1fc433b785934694b772265197cdd685");
+        response=await axios.get(`https://newsapi.org/v2/everything?q=india&from=2024-06-03&to=2024-06-04&apiKey=1fc433b785934694b772265197cdd685`);
         console.log(response.data.articles.length)
+        console.log(date)
     }
     catch(err)
     {
@@ -28,8 +33,12 @@ app.get("/", async (req,res)=>{
 app.get("/next", async (req,res)=>{
     var response;
     c++;
+    if(c<0)
+        {
+            c=0;
+        }
     try{
-        response=await axios.get("https://newsapi.org/v2/everything?q=india&from=2024-05-25&to=2024-05-25&apiKey=1fc433b785934694b772265197cdd685");
+        response=await axios.get("https://newsapi.org/v2/everything?q=india&from=2024-06-03&to=2024-06-04&apiKey=1fc433b785934694b772265197cdd685");
         console.log(c)
         console.log(response.data.articles.length)
     }
@@ -44,7 +53,7 @@ app.get("/prev", async (req,res)=>{
     var response;
     c--;
     try{
-        response=await axios.get("https://newsapi.org/v2/everything?q=india&from=2024-05-25&to=2024-05-25&apiKey=1fc433b785934694b772265197cdd685");
+        response=await axios.get("https://newsapi.org/v2/everything?q=india&from=2024-06-03&to=2024-06-04&apiKey=1fc433b785934694b772265197cdd685");
         console.log(c)
         console.log(response.data.articles.length)
     }
@@ -131,7 +140,11 @@ app.get("/technology", async (req,res)=>{
 
 
 
-
+//Feedback page
+app.get("/feedback",(req,res)=>{
+    
+    res.render("feedback.ejs");
+})
 
 //Search news
 
@@ -139,6 +152,52 @@ app.get("/search",(req,res)=>{
     res.render("search.ejs");
 })
 
+
+//send search data
+app.post("/searchdata", async (req,res)=>{
+
+    var response;
+    var c=0;
+    var s=req.body["search"];
+    console.log(req.body)
+    console.log(s);
+    try{
+        if(s=="")
+            {
+                res.render("search.ejs")  
+                c=1;
+            }
+            else
+            {
+        response=await axios.get(`https://newsapi.org/v2/everything?q=${s}&searchIn=title&language=en&apiKey=1fc433b785934694b772265197cdd685`);
+            }
+    }
+    catch(err)
+    {
+        console.log("there is error");
+        var da={
+            articles:[]
+        }
+        res.render("search.ejs",{data:da});
+        c=1;
+    }
+    if(c==0)
+        {
+            res.render("search.ejs",{data:response.data.articles});
+        }
+   
+})
+
+
+//collecting feedback from user
+
+app.post("/submit",(req,res)=>{
+
+    console.log(req.body["name"])
+    console.log(req.body["mail"])
+    console.log(req.body["area"])
+    res.redirect("/");
+})
 
 //Start Running a Server
 app.listen(port,(err)=>{

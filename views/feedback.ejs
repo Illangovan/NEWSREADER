@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEED BACK</title>
+    <style>
+        *
+{
+    padding: 0;
+    margin: 0;
+    font-family:'roboto',sans-serif;
+    box-sizing: border-box;
+}
+body
+{
+width: 100%;
+height: 93vh;
+background: linear-gradient(to right,#3f5efb,#fc466b);
+}
+.container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+form
+{
+    margin-top:3rem;
+    width:250px;
+    height: 24rem;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255,255,255,0.06);
+    border-radius:30px;
+    border: 1px solid rgba(255,255,255,.3);
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,.37);
+}
+h3{
+    margin-top: 5rem;
+    font-size:2rem;
+    text-align: center;
+    align-items: center;
+    color: rgb(18, 206, 231);
+}
+label
+{
+    color: white;
+    font-size: 1rem;
+    opacity: .8;
+    margin-left: 15%;
+}
+input{
+    width: 70%;
+    margin: 5% auto;
+    background: transparent;
+    color: white;
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.9);
+    opacity:0.8;
+}
+input:focus{
+    border-bottom: 1px solid rgb(250, 11, 250);
+}
+textarea
+{
+    width: 70%;
+    margin: 5% auto; 
+    background: transparent;
+    color: white;
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.9);
+    opacity:0.8;
+}
+button{
+    width: 40%;
+    margin-left: 25%;
+    margin-top: 15px;
+    background: transparent;
+    padding: 10px 30px;
+    color: white;
+    outline: none;
+    border: 0;
+    border-radius: 40px;
+   background: rgba(255,255,255,.2);
+}
+button:hover{
+    background:rgba(255,255,255,0.4);
+}
+.header
+{
+     width: 100%;
+     height:70px;
+     background-color: black;
+     padding-left:5%;
+     padding-top:25px;
+    margin:0;
+    display: block;
+    align-items: baseline;
+}
+.header a{
+     text-align: left;
+     color: white;
+     text-decoration: none;
+     font-family: bold;
+
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h3>FEEDBACK</h3>
+    <form id="formDetail" action="/submit" method="post">
+        <label for="name">NAME</label>
+        <input type="text" name="name" id="name"  required>
+        <label for="mail" >EMAIL</label>
+        <input type="email" name="mail" id="mail" required>
+        <label for="area">FEEDBACK</label>
+        <textarea id="area" name="area" required></textarea>
+        <button type="submit" >SUBMIT</button>
+    </form>
+</div>
+</body>
+</html>
