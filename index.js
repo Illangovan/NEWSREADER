@@ -2,7 +2,7 @@ const axios=require("axios");
 const bodyParser = require("body-parser");
 const express=require("express")
 const app=express();
-const port=3000;
+const port=process.env.PORT ||3000 ;
 
 
 
@@ -18,12 +18,11 @@ app.get("/", async (req,res)=>{
     c=0;
     try{
         response=await axios.get(`https://newsapi.org/v2/everything?q=india&from=2024-06-03&to=2024-06-04&apiKey=1fc433b785934694b772265197cdd685`);
-        console.log(response.data.articles.length)
-        console.log(date)
+      
     }
     catch(err)
     {
-        console.log(err);
+        
     }
     res.render("index.ejs",{data:response.data.articles,start:0,end:10});
 })

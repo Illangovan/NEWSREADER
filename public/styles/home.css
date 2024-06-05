@@ -69,6 +69,8 @@ section
     border-radius: 20px;
 }
 
+
+/*Footer code for search page  */
 .search_footer
 {
     width: 100%;
@@ -76,9 +78,10 @@ section
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color:rgb(222, 11, 230);
+    background-color:black;
     color: var(--grey);
     padding: 20px 0 0 10px;
+    color: white;
     font-size: 1rem; 
     bottom: 0;
     position: fixed;
@@ -91,9 +94,10 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color:rgb(222, 11, 230);
+    background-color:black;
     color: var(--grey);
     padding: 20px 0 0 10px;
+    color: white;
     font-size: 1rem;
   }
   
