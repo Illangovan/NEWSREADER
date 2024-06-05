@@ -5,7 +5,7 @@ const mongoose=require("mongoose")
 const app=express();
 const port=process.env.PORT ||3000 ;
 
-//Mongo db connection
+//Mongo db connection URL
 const mongodbURL="mongodb+srv://andrewillango1212:gNKoIVjBk6yIcPLa@cluster0.feslzkv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
 //creating schema for database
