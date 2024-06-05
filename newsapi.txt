@@ -1,3 +1,9 @@
 https://newsapi.org/v2/everything?q=bitcoin&apiKey=1fc433b785934694b772265197cdd685
 
 mongopw:gNKoIVjBk6yIcPLa
+
+connect:
+
+mongodb+srv://andrewillango1212:gNKoIVjBk6yIcPLa@cluster0.dt1915m.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+mongodb+srv://andrewillango1212:NKoIVjBk6yIcPLa@cluster0.feslzkv.mongodb.net/

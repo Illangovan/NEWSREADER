@@ -16,7 +16,8 @@ body
 {
 width: 100%;
 height: 93vh;
-background: linear-gradient(to right,#3f5efb,#fc466b);
+background: linear-gradient(to right,rgb(18, 206, 231),black);
+/*background: linear-gradient(to right,#3f5efb,#fc466b);*/
 }
 .container
 {
@@ -43,7 +44,7 @@ h3{
     font-size:2rem;
     text-align: center;
     align-items: center;
-    color: rgb(18, 206, 231);
+    color:white;
 }
 label
 {
@@ -117,9 +118,9 @@ button:hover{
     <form id="formDetail" action="/submit" method="post">
         <label for="name">NAME</label>
         <input type="text" name="name" id="name"  required>
-        <label for="mail" >EMAIL</label>
-        <input type="email" name="mail" id="mail" required>
-        <label for="area">FEEDBACK</label>
+        <label for="mail" >MOBILE</label>
+        <input type="text" name="mail" id="mail" required>
+        <label for="area">MESSAGE</label>
         <textarea id="area" name="area" required></textarea>
         <button type="submit" >SUBMIT</button>
     </form>
