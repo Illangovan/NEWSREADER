@@ -47,7 +47,7 @@ app.get("/", async (req,res)=>{
     var response;
     c=0;
     try{
-        response=await axios.get(`https://newsapi.org/v2/everything?q=india&from=2024-11-25&to=2024-11-27&apiKey=1fc433b785934694b772265197cdd685`);
+        response=await axios.get(`https://newsapi.org/v2/everything?q=india&from=2024-11-25&to=2024-11-27&pageSize=10&apiKey=1fc433b785934694b772265197cdd685`);
       
     }
     catch(err)
