@@ -48,7 +48,7 @@ app.get("/", async (req,res)=>{
     var response;
     c=0;
     try{
-        response=await axios.get(`https://newsapi.org/v2/everything?q=india&from=2025-01-01&to=2024-01-20&pageSize=10&apiKey=1fc433b785934694b772265197cdd685`);
+        response=await axios.get(`https://newsapi.org/v2/everything?q=india&from=2025-02-01&to=2024-02-15&pageSize=10&apiKey=1fc433b785934694b772265197cdd685`);
 
     }
     catch(err)
@@ -68,7 +68,7 @@ app.get("/next", async (req,res)=>{
             c=0;
         }
     try{
-        response=await axios.get("https://newsapi.org/v2/everything?q=india&from=2025-01-01&to=2024-01-20&apiKey=1fc433b785934694b772265197cdd685");
+        response=await axios.get("https://newsapi.org/v2/everything?q=india&from=2025-02-01&to=2024-02-15&apiKey=1fc433b785934694b772265197cdd685");
         console.log(c)
         console.log(response.data.articles.length)
     }
@@ -83,7 +83,7 @@ app.get("/prev", async (req,res)=>{
     var response;
     c--;
     try{
-        response=await axios.get("https://newsapi.org/v2/everything?q=india&from=2025-01-01&to=2024-01-20&apiKey=1fc433b785934694b772265197cdd685");
+        response=await axios.get("https://newsapi.org/v2/everything?q=india&from=2025-02-01&to=2024-02-15&apiKey=1fc433b785934694b772265197cdd685");
         console.log(c)
         console.log(response.data.articles.length)
     }
