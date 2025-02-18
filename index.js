@@ -48,14 +48,16 @@ app.get("/", async (req,res)=>{
     var response;
     c=0;
     try{
-        response=await axios.get(`https://newsapi.org/v2/everything?q=india&from=2025-02-01&to=2024-02-15&pageSize=10&apiKey=1fc433b785934694b772265197cdd685`);
-
+     response=await axios.get(`https://newsapi.org/v2/everything?q=india&pageSize=10&apiKey=1fc433b785934694b772265197cdd685`);
+      
     }
     catch(err)
     {
         
     }
-   res.render("index.ejs",{data:response.data.articles,start:0,end:10});
+    var s=response.data.articles.length;
+   res.render("index.ejs",{data:response.data.articles,start:0,end:s});
+   //console.log(response);
 })
 
 
